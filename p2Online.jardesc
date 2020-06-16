@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<jardesc>
+    <jar path="project2Online.jar"/>
+    <options buildIfNeeded="true" compress="true" descriptionLocation="/shadow-1/p2Online.jardesc" exportErrors="false" exportWarnings="true" includeDirectoryEntries="true" overwrite="false" saveDescription="true" storeRefactorings="true" useSourceFolders="false"/>
+    <storedRefactorings deprecationInfo="true" structuralOnly="false"/>
+    <selectedProjects/>
+    <manifest generateManifest="true" manifestLocation="" manifestVersion="1.0" reuseManifest="false" saveManifest="false" usesManifest="true">
+        <sealing sealJar="false">
+            <packagesToSeal/>
+            <packagesToUnSeal/>
+        </sealing>
+    </manifest>
+    <selectedElements exportClassFiles="true" exportJavaFiles="true" exportOutputFolder="false">
+        <file path="/shadow-1/mvnw"/>
+        <file path="/shadow-1/.gitignore"/>
+        <folder path="/shadow-1/target"/>
+        <file path="/shadow-1/.project"/>
+        <file path="/shadow-1/pom.xml"/>
+        <file path="/shadow-1/mvnw.cmd"/>
+        <folder path="/shadow-1/src"/>
+        <javaElement handleIdentifier="=shadow-1/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/"/>
+        <file path="/shadow-1/.classpath"/>
+        <javaElement handleIdentifier="=shadow-1/src\/main\/resources=/maven.pomderived=/true=/"/>
+        <javaElement handleIdentifier="=shadow-1/src\/test\/java=/optional=/true=/=/maven.pomderived=/true=/=/test=/true=/"/>
+        <file path="/shadow-1/HELP.md"/>
+    </selectedElements>
+</jardesc>
