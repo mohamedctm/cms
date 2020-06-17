@@ -25,7 +25,9 @@ public interface WriterRepository extends JpaRepository<Writer, Integer>{
 		      nativeQuery = true)
 		  List<Writer> checkUsernamePassword(String username, String password);
 	  
-	  
+	// FIND WRITER FROM ID IN POST TO /messages --> John A. (06/16/20)
+	     @Query(value = "select * from project2.writers where writerid = :senderid", nativeQuery = true)
+	     List<Writer> grabMessageSender(Integer senderid);
 	  
 	  
 

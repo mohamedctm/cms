@@ -1,13 +1,13 @@
 package com.project2.cms.controller;
 
-import java.util.Arrays;
+//import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
+//import java.util.stream.Collectors;
 
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
+//import javax.servlet.http.Cookie;
+//import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -108,7 +108,8 @@ public class WriterController {
     			    	   writer.setPhone(writerDetails.getPhone());}
     			       String string = writerDetails.getPermission().toString();
     			       try {
-    			           Double x = Double.parseDouble(string);
+    			           @SuppressWarnings("unused")
+						Double x = Double.parseDouble(string);
     			           writer.setPermission(writerDetails.getPermission());
     			       } catch (NumberFormatException e) {
     			           e.getMessage();
@@ -151,10 +152,6 @@ public class WriterController {
     @PostMapping("/login")
     public Writer attemptLogin(@RequestBody Credentials creds, HttpSession session) {
       Boolean isLoggedIn =writerService.checkCredentials(creds.getUsername(), creds.getPassword());
-      
-      if(isLoggedIn == false) {
-	      throw new ResponseStatusException(HttpStatus.UNAUTHORIZED);
-      }
       List<Writer> store = writerRepository.checkUsernamePassword(creds.getUsername(), creds.getPassword());
 
       session.setAttribute("isLoggedIn", isLoggedIn);
@@ -162,6 +159,10 @@ public class WriterController {
       session.setAttribute("writerpermission", store.get(0).getPermission());
       session.setAttribute("writerid", store.get(0).getWriterid());
 
+      
+      if(isLoggedIn == false) {
+	      throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+      }
       return store.get(0);
     }
     
@@ -169,7 +170,7 @@ public class WriterController {
     public String info(HttpSession session) {
     	String xxx = session.getAttribute("isLoggedIn").toString();
          session.setAttribute("isLoggedIn", false);
-         return "You've logged out successfuly";
+         return xxx;
 
     }
     
