@@ -152,7 +152,7 @@ public class WriterController {
     }
 
     @PostMapping("/login")
-    public Writer attemptLogin(@RequestBody Credentials creds, HttpSession session) {
+    public Object attemptLogin(@RequestBody Credentials creds, HttpSession session) {
       Boolean isLoggedIn =writerService.checkCredentials(creds.getUsername(), creds.getPassword());
 	    if(isLoggedIn == false) {
 	      throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
@@ -163,7 +163,7 @@ public class WriterController {
       
       session.setAttribute("writerpermission", store.get(0).getPermission());
       session.setAttribute("writerid", store.get(0).getWriterid());
-      return store.get(0);
+      return store;
 	    }
     }
     
