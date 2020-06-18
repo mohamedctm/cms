@@ -33,7 +33,7 @@ import com.project2.cms.exception.ResourceNotFoundException;
 
 @RestController
 @Controller
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:3000", maxAge = 3600)
 @RequestMapping("/")
 public class WriterController {
 	
@@ -41,7 +41,7 @@ public class WriterController {
 	  WriterService writerService;
     @Autowired
     private WriterRepository writerRepository;
-    @CrossOrigin
+    
     @GetMapping("/writers")
     public List<Writer> getAllWriters(HttpSession session) {
     	if (session.getAttribute("isLoggedIn") != null
@@ -54,7 +54,7 @@ public class WriterController {
     	      throw new ResponseStatusException(HttpStatus.FORBIDDEN);
         }
     }
-    @CrossOrigin
+
     @GetMapping("/writers/{id}")
     public ResponseEntity<Writer> getWriterById(@PathVariable(value = "id") Integer writerid,HttpSession session)
         throws ResourceNotFoundException {
@@ -71,7 +71,7 @@ public class WriterController {
       }
     }
     
-    @CrossOrigin
+    
     @PostMapping("/writers")
     public Writer createWriter(@Validated @RequestBody Writer writer, HttpSession session) {
     	if (session.getAttribute("isLoggedIn") != null
@@ -86,7 +86,7 @@ public class WriterController {
     }
     
     //update writers (admin && the writers for his own)
-    @CrossOrigin
+
     @PutMapping("/writers/{id}")
     public ResponseEntity<Writer> updateWriter(@PathVariable(value = "id") Integer writerid,
          @Validated @RequestBody Writer writerDetails,  HttpSession session) throws ResourceNotFoundException {
@@ -130,7 +130,7 @@ public class WriterController {
   	      throw new ResponseStatusException(HttpStatus.FORBIDDEN);
       }
     }
-    @CrossOrigin
+
     @DeleteMapping("/writers/{id}")
     public Map<String, Boolean> deleteWriter(@PathVariable(value = "id") Integer writerid, HttpSession session)
          throws ResourceNotFoundException {
@@ -150,7 +150,7 @@ public class WriterController {
     	      throw new ResponseStatusException(HttpStatus.FORBIDDEN);
         }
     }
-    @CrossOrigin
+
     @PostMapping("/login")
     public Writer attemptLogin(@RequestBody Credentials creds, HttpSession session) {
       Boolean isLoggedIn =writerService.checkCredentials(creds.getUsername(), creds.getPassword());
@@ -167,7 +167,7 @@ public class WriterController {
       }
       return store.get(0);
     }
-    @CrossOrigin
+    
     @GetMapping("/logout")
     public String info(HttpSession session) {
     	String xxx = session.getAttribute("isLoggedIn").toString();
