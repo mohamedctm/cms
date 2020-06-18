@@ -24,10 +24,15 @@ public WebMvcConfigurer corsConfigurer() {
   // We're defining the class we're using inline here as a shortcut.
   // You could create a separate file
   return new WebMvcConfigurer() {
-    @Override
+        @Override
     public void addCorsMappings(CorsRegistry registry) {
-      registry.addMapping("/**").allowedMethods("GET", "POST", "PUT", "PATCH", "DELETE",
-          "OPTIONS");
+    	registry.addMapping("/**")
+    		.allowedOrigins("http://localhost:3000")
+    		.allowedMethods("GET", "POST", "PUT", "PATCH", "DELETE",
+    	          "OPTIONS")
+    			.allowedHeaders("header1", "header2", "header3")
+    		.exposedHeaders("header1", "header2")
+    		.allowCredentials(false).maxAge(3600);
     }
   };
 }
