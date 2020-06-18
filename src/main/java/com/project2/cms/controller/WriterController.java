@@ -33,7 +33,7 @@ import com.project2.cms.exception.ResourceNotFoundException;
 
 @RestController
 @Controller
-@CrossOrigin(origins = "http://localhost:3000", maxAge = 3600)
+@CrossOrigin
 @RequestMapping("/")
 public class WriterController {
 	
