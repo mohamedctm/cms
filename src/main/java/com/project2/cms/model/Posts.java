@@ -19,6 +19,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 
 public class Posts {
+	@JsonIgnore
+@JsonProperty(value = "postid")
 	@Id
 	  @GeneratedValue(strategy = GenerationType.IDENTITY)
 	  @Column(name = "postid")
