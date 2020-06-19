@@ -8,6 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 
 //import lombok.Data;
@@ -29,10 +31,14 @@ public class Posts {
 	private String postDescription;
 	  @Column(name = "posttext")
 	private String postText;
+	@JsonIgnore
+@JsonProperty(value = "datesubmitted")
 	  @Column(name = "datesubmitted")
-	private String dateSubmitted;
+	private Date dateSubmitted;
+	@JsonIgnore
+@JsonProperty(value = "datepublished")
 	  @Column(name = "datepublished")
-	private String datePublished;
+	private Date datePublished;
 	  @Column(name = "posttype")
 	private String postType;
 	  @Column(name = "postfield")
