@@ -30,9 +30,9 @@ public class Posts {
 	  @Column(name = "posttext")
 	private String postText;
 	  @Column(name = "datesubmitted")
-	private Date dateSubmitted;
+	private String dateSubmitted;
 	  @Column(name = "datepublished")
-	private Date datePublished;
+	private String datePublished;
 	  @Column(name = "posttype")
 	private String postType;
 	  @Column(name = "postfield")
@@ -49,7 +49,7 @@ public class Posts {
 	public Posts() {}
 	
 	public Posts(Integer postId, Integer author, String postTitle, String postDescription, String postText,
-			Date dateSubmitted, Date datePublished, String postType, String postField, String keyWords,
+			String dateSubmitted, String datePublished, String postType, String postField, String keyWords,
 			Integer resolver, String status, Integer published) {
 		super();
 		this.postId = postId;
@@ -107,19 +107,19 @@ public class Posts {
 		this.postText = postText;
 	}
 
-	public Date getDateSubmitted() {
+	public String getDateSubmitted() {
 		return dateSubmitted;
 	}
 
-	public void setDateSubmitted(Date dateSubmitted) {
+	public void setDateSubmitted(String dateSubmitted) {
 		this.dateSubmitted = dateSubmitted;
 	}
 
-	public Date getDatePublished() {
+	public String getDatePublished() {
 		return datePublished;
 	}
 
-	public void setDatePublished(Date datePublished) {
+	public void setDatePublished(String datePublished) {
 		this.datePublished = datePublished;
 	}
 
